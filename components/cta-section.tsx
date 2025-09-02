@@ -47,7 +47,7 @@ export function CTASection() {
 
   const tools = [
     { name: "Slack", fallback: "📱", logo: "/logos/slack.png" },
-    { name: "Notion", fallback: "📝", logo: "/logos/notion.png" },
+    { name: "Notion", logo: "/logos/notion.png" },
     { name: "Zapier", fallback: "🔗", logo: "/logos/zapier.png" },
     { name: "HubSpot", fallback: "🎯", logo: "/logos/hubspot.png" },
     { name: "Salesforce", fallback: "☁️", logo: "/logos/salesforce.png" },
