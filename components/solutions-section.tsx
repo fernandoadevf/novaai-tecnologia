@@ -1,51 +1,31 @@
+"use client"
+
 import { ScrollReveal } from "./scroll-reveal"
 import { Card, CardContent } from "./ui/card"
 import { Zap, Link, Brain, ArrowRight } from "lucide-react"
 import { Button } from "./ui/button"
-
-const pillars = [
-  {
-    icon: Zap,
-    title: "Automação de Processos",
-    description: "Tarefas repetitivas eliminadas com workflows inteligentes que funcionam 24/7.",
-    color: "from-[#00D4B3] to-[#00D4B3]/80",
-    bgColor: "bg-[#00D4B3]/10",
-    iconColor: "text-[#00D4B3]"
-  },
-  {
-    icon: Link,
-    title: "Integração Inteligente",
-    description: "Sistemas que conversam entre si, criando um ecossistema unificado e eficiente.",
-    color: "from-[#0F172A] to-[#1F2937]",
-    bgColor: "bg-[#0F172A]/10",
-    iconColor: "text-[#0F172A]"
-  },
-  {
-    icon: Brain,
-    title: "IA como Colaborador",
-    description: "Agentes inteligentes que respondem, analisam e executam como verdadeiros membros da equipe.",
-    color: "from-[#00D4B3] to-[#00D4B3]/80",
-    bgColor: "bg-[#00D4B3]/10",
-    iconColor: "text-[#00D4B3]"
-  }
-]
+import { useLanguage } from "@/contexts/LanguageContext"
+import { translations } from "@/lib/translations"
 
 export function SolutionsSection() {
+  const { language } = useLanguage()
+  const t = translations[language]
+
+  const pillars = t.solutions.pillars
+
   return (
     <section id="solutions" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="container mx-auto max-w-7xl">
         <ScrollReveal delay={100}>
           <div className="text-center space-y-4 mb-16">
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#00D4B3]/10 text-[#00D4B3] text-sm font-medium">
-              O que fazemos
+              {t.solutions.badge}
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] font-[var(--font-space-grotesk)]">
-              Nossa{" "}
-              <span className="text-[#00D4B3] block">filosofia de transformação</span>
+              {t.solutions.title}
             </h2>
             <p className="text-lg text-[#1F2937] max-w-2xl mx-auto text-pretty">
-              Não vendemos apenas automação. Criamos um ecossistema inteligente que 
-              transforma a forma como sua empresa opera, liberando seu time para o que realmente importa.
+              {t.solutions.subtitle}
             </p>
           </div>
         </ScrollReveal>
@@ -56,8 +36,10 @@ export function SolutionsSection() {
               <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-[#00D4B3]/20 bg-white overflow-hidden">
                 <CardContent className="p-8 space-y-6">
                   {/* Icon with gradient background */}
-                  <div className={`w-20 h-20 ${pillar.bgColor} rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300`}>
-                    <pillar.icon className={`w-10 h-10 ${pillar.iconColor}`} />
+                  <div className="w-20 h-20 bg-[#00D4B3]/10 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                    {pillar.icon === "automation" && <Zap className="w-10 h-10 text-[#00D4B3]" />}
+                    {pillar.icon === "integration" && <Link className="w-10 h-10 text-[#00D4B3]" />}
+                    {pillar.icon === "ai" && <Brain className="w-10 h-10 text-[#00D4B3]" />}
                   </div>
 
                   {/* Content */}
@@ -99,7 +81,7 @@ export function SolutionsSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Falar com especialista
+                  {t.solutions.cta}
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>

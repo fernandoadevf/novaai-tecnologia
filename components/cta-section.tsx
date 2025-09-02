@@ -4,6 +4,8 @@ import { Button } from "./ui/button"
 import { ArrowRight, Shield, Zap, CheckCircle, Sparkles, Brain } from "lucide-react"
 import { ScrollReveal } from "./scroll-reveal"
 import { useState, useEffect } from "react"
+import { useLanguage } from "@/contexts/LanguageContext"
+import { translations } from "@/lib/translations"
 
 // Componente Client para renderizar logo ou fallback
 function ToolLogo({ tool }: { tool: { name: string; logo: string; fallback: string } }) {
@@ -27,6 +29,8 @@ function ToolLogo({ tool }: { tool: { name: string; logo: string; fallback: stri
 
 export function CTASection() {
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
+  const { language } = useLanguage()
+  const t = translations[language]
   
   // Inicializa o widget do Calendly quando o modal abrir
   useEffect(() => {
@@ -69,17 +73,16 @@ export function CTASection() {
             <div className="text-center space-y-8 mb-16">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#00D4B3]/10 text-[#00D4B3] text-sm font-medium border border-[#00D4B3]/20">
                 <Sparkles className="w-4 h-4 mr-2" />
-                O futuro com NovaAI
+                {t.cta.futuro.badge}
               </div>
               
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0F172A] font-[var(--font-space-grotesk)] text-balance">
-                Enquanto sua equipe pensa no{" "}
-                <span className="text-[#00D4B3] block">próximo grande passo</span>
+                {t.cta.futuro.title}{" "}
+                <span className="text-[#00D4B3] block">{t.cta.futuro.titleHighlight}</span>
               </h2>
               
               <p className="text-xl text-[#1F2937] max-w-3xl mx-auto text-pretty leading-relaxed">
-                A NovaAI garante que cada detalhe do presente esteja rodando sozinho. 
-                Seu time pode focar na inovação enquanto nossa tecnologia cuida da operação.
+                {t.cta.futuro.subtitle}
               </p>
             </div>
           </ScrollReveal>
@@ -91,27 +94,19 @@ export function CTASection() {
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-[#0F172A]">
-                      IA como copiloto invisível
+                      {t.cta.futuro.visual.title}
                     </h3>
                     <p className="text-[#1F2937] text-pretty leading-relaxed">
-                      Nossa inteligência artificial trabalha nos bastidores, 
-                      garantindo que todos os processos funcionem perfeitamente 
-                      enquanto sua equipe se concentra no que realmente importa.
+                      {t.cta.futuro.visual.description}
                     </p>
                     
                     <div className="space-y-4">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-[#00D4B3] rounded-full"></div>
-                        <span className="text-[#1F2937]">Processos rodando 24/7</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-[#00D4B3] rounded-full"></div>
-                        <span className="text-[#1F2937]">Zero erros humanos</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-[#00D4B3] rounded-full"></div>
-                        <span className="text-[#1F2937]">Escalabilidade automática</span>
-                      </div>
+                      {t.cta.futuro.visual.features.map((feature, index) => (
+                        <div key={index} className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-[#00D4B3] rounded-full"></div>
+                          <span className="text-[#1F2937]">{feature}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                   
@@ -136,17 +131,16 @@ export function CTASection() {
             <div className="text-center space-y-8 mb-16">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#00D4B3]/10 text-[#00D4B3] text-sm font-medium border border-[#00D4B3]/20">
                 <Shield className="w-4 h-4 mr-2" />
-                Ferramentas Reconhecidas
+                {t.cta.ferramentas.badge}
               </div>
               
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white font-[var(--font-space-grotesk)] text-balance">
-                Integramos com as{" "}
-                <span className="text-[#00D4B3] block">melhores ferramentas do mercado</span>
+                {t.cta.ferramentas.title}{" "}
+                <span className="text-[#00D4B3] block">{t.cta.ferramentas.titleHighlight}</span>
               </h2>
               
               <p className="text-lg text-white/90 max-w-3xl mx-auto text-pretty">
-                A NovaAI trabalha com as ferramentas que você já conhece e confia. 
-                Não precisamos reinventar a roda, apenas conectá-las de forma inteligente.
+                {t.cta.ferramentas.subtitle}
               </p>
             </div>
           </ScrollReveal>
@@ -221,39 +215,23 @@ export function CTASection() {
             <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-white/10 mb-16">
               <div className="text-center space-y-6">
                 <h3 className="text-2xl sm:text-3xl font-bold text-white">
-                  Por que confiar na NovaAI?
+                  {t.cta.ferramentas.authority.title}
                 </h3>
                 
                 <div className="grid md:grid-cols-3 gap-8">
-                  <div className="space-y-3">
-                    <div className="w-16 h-16 bg-[#00D4B3]/20 rounded-2xl flex items-center justify-center mx-auto">
-                      <Shield className="w-8 h-8 text-[#00D4B3]" />
+                  {t.cta.ferramentas.authority.features.map((feature, index) => (
+                    <div key={index} className="space-y-3">
+                      <div className="w-16 h-16 bg-[#00D4B3]/20 rounded-2xl flex items-center justify-center mx-auto">
+                        {feature.title.includes("Segurança") && <Shield className="w-8 h-8 text-[#00D4B3]" />}
+                        {feature.title.includes("Suporte") && <CheckCircle className="w-8 h-8 text-[#00D4B3]" />}
+                        {feature.title.includes("Escalabilidade") && <Zap className="w-8 h-8 text-[#00D4B3]" />}
+                      </div>
+                      <h4 className="text-lg font-semibold text-white">{feature.title}</h4>
+                      <p className="text-white/80 text-sm">
+                        {feature.description}
+                      </p>
                     </div>
-                    <h4 className="text-lg font-semibold text-white">Segurança Enterprise</h4>
-                    <p className="text-white/80 text-sm">
-                      Infraestrutura robusta com certificações de segurança e compliance.
-                    </p>
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <div className="w-16 h-16 bg-[#00D4B3]/20 rounded-2xl flex items-center justify-center mx-auto">
-                      <CheckCircle className="w-8 h-8 text-[#00D4B3]" />
-                    </div>
-                    <h4 className="text-lg font-semibold text-white">Suporte Especializado</h4>
-                    <p className="text-white/80 text-sm">
-                      Equipe técnica dedicada para garantir que tudo funcione perfeitamente.
-                    </p>
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <div className="w-16 h-16 bg-[#00D4B3]/20 rounded-2xl flex items-center justify-center mx-auto">
-                      <Zap className="w-8 h-8 text-[#00D4B3]" />
-                    </div>
-                    <h4 className="text-lg font-semibold text-white">Escalabilidade Ilimitada</h4>
-                    <p className="text-white/80 text-sm">
-                      Sua automação cresce junto com seu negócio, sem limites ou restrições.
-                    </p>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -264,11 +242,10 @@ export function CTASection() {
             <div className="text-center space-y-8">
               <div className="space-y-4">
                 <h3 className="text-2xl sm:text-3xl font-bold text-white">
-                  Pronto para ter sua própria equipe digital trabalhando por você?
+                  {t.cta.ferramentas.cta.title}
                 </h3>
                 <p className="text-lg text-white/80 max-w-2xl mx-auto">
-                  Junte-se a centenas de empresas que já transformaram seus processos 
-                  com nossas soluções de automação inteligente.
+                  {t.cta.ferramentas.cta.subtitle}
                 </p>
               </div>
               
@@ -283,7 +260,7 @@ export function CTASection() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Quero automatizar meu negócio
+                    {t.cta.ferramentas.cta.primary}
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>
@@ -294,20 +271,18 @@ export function CTASection() {
                   className="border-white/30 text-white hover:bg-white/10 bg-transparent text-lg px-8 py-6 h-auto transition-all duration-300 hover:-translate-y-1"
                   onClick={() => setIsCalendlyOpen(true)}
                 >
-                  Agendar reunião
+                  {t.cta.ferramentas.cta.secondary}
                 </Button>
               </div>
 
               {/* Trust indicators */}
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 text-white/80">
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-[#00D4B3] rounded-full"></div>
-                  <span className="text-sm">Suporte 24/7</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-[#00D4B3] rounded-full"></div>
-                  <span className="text-sm">Implementação personalizada</span>
-                </div>
+                {t.cta.ferramentas.trustIndicators.map((indicator, index) => (
+                  <div key={index} className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-[#00D4B3] rounded-full"></div>
+                    <span className="text-sm">{indicator}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </ScrollReveal>
@@ -342,4 +317,4 @@ export function CTASection() {
         )}
       </>
     )
-}
+  }

@@ -2,6 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Space_Grotesk, DM_Sans } from "next/font/google"
 import { Suspense } from "react"
+import { LanguageProvider } from "@/contexts/LanguageContext"
+import { LanguageWrapper } from "@/components/LanguageWrapper"
 import "./globals.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -48,7 +50,10 @@ export default function RootLayout({
         <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
       </head>
       <body className={`font-sans ${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
-        <Suspense fallback={null}>{children}</Suspense>
+        <LanguageProvider>
+          <LanguageWrapper />
+          <Suspense fallback={null}>{children}</Suspense>
+        </LanguageProvider>
       </body>
     </html>
   )
