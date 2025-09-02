@@ -47,7 +47,7 @@ export function CTASection() {
 
   const tools = [
     { name: "Slack", fallback: "📱", logo: "/logos/slack.png" },
-    { name: "Notion", fallback: "📝", logo: "/logos/notion.png" },
+    { name: "Notion", fallback: "📝", logo: "/logos/Notion.png" },
     { name: "Zapier", fallback: "🔗", logo: "/logos/zapier.png" },
     { name: "HubSpot", fallback: "🎯", logo: "/logos/hubspot.png" },
     { name: "Salesforce", fallback: "☁️", logo: "/logos/salesforce.png" },
@@ -56,7 +56,7 @@ export function CTASection() {
     { name: "Trello", fallback: "📋", logo: "/logos/trello.png" },
     { name: "Asana", fallback: "✅", logo: "/logos/asana.png" },
     { name: "Monday.com", fallback: "📅", logo: "/logos/monday-.png" },
-    { name: "Airtable", fallback: "🗃️", logo: "/logos/airtable.png" },
+    { name: "Airtable", fallback: "🗃️", logo: "/logos/Airtable.png" },
     { name: "Figma", fallback: "🎨", logo: "/logos/figma.png" }
   ];
 
