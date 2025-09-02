@@ -30,24 +30,24 @@ export function CTASection() {
   
   // Inicializa o widget do Calendly quando o modal abrir
   useEffect(() => {
-    if (isCalendlyOpen && window.Calendly) {
+    if (isCalendlyOpen && (window as any).Calendly) {
       // Aguarda um pouco para o DOM ser renderizado
       setTimeout(() => {
-        if (window.Calendly) {
-          window.Calendly.initInlineWidget({
+        if ((window as any).Calendly) {
+          (window as any).Calendly.initInlineWidget({
             url: 'https://calendly.com/ainova-adm/30min',
             parentElement: document.querySelector('.calendly-inline-widget'),
             minWidth: '320px',
             height: '600px'
           });
         }
-      }, 100);
+      }, 100);  
     }
   }, [isCalendlyOpen]);
 
   const tools = [
     { name: "Slack", fallback: "📱", logo: "/logos/slack.png" },
-    { name: "Notion", logo: "/logos/notion.png" },
+    { name: "Notion", fallback: "📝", logo: "/logos/notion.png" },
     { name: "Zapier", fallback: "🔗", logo: "/logos/zapier.png" },
     { name: "HubSpot", fallback: "🎯", logo: "/logos/hubspot.png" },
     { name: "Salesforce", fallback: "☁️", logo: "/logos/salesforce.png" },
@@ -164,8 +164,6 @@ export function CTASection() {
                     </span>
                   </div>
                 ))}
-                {/* Espaçamento extra para transição suave */}
-                <div className="w-8 sm:w-12 lg:w-16"></div>
               </div>
               
               {/* Segunda linha (duplicada para efeito infinito) */}
@@ -178,8 +176,6 @@ export function CTASection() {
                     </span>
                   </div>
                 ))}
-                {/* Espaçamento extra para transição suave */}
-                <div className="w-8 sm:w-12 lg:w-16"></div>
               </div>
 
               {/* Terceira linha (mais uma duplicata para garantir continuidade) */}
@@ -192,8 +188,30 @@ export function CTASection() {
                     </span>
                   </div>
                 ))}
-                {/* Espaçamento extra para transição suave */}
-                <div className="w-8 sm:w-12 lg:w-16"></div>
+              </div>
+              
+              {/* Quarta linha (mais uma duplicata para garantir continuidade) */}
+              <div className="flex space-x-8 sm:space-x-12 lg:space-x-16 items-center flex-shrink-0">
+                {tools.map((tool, index) => (
+                  <div key={`duplicate-3-${index}`} className="group flex flex-col items-center min-w-[100px] sm:min-w-[120px] lg:min-w-[140px]">
+                    <ToolLogo tool={tool} />
+                    <span className="text-white/80 text-xs sm:text-sm text-center group-hover:text-white transition-colors">
+                      {tool.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Quinta linha (mais uma duplicata para garantir continuidade) */}
+              <div className="flex space-x-8 sm:space-x-12 lg:space-x-16 items-center flex-shrink-0">
+                {tools.map((tool, index) => (
+                  <div key={`duplicate-4-${index}`} className="group flex flex-col items-center min-w-[100px] sm:min-w-[120px] lg:min-w-[140px]">
+                    <ToolLogo tool={tool} />
+                    <span className="text-white/80 text-xs sm:text-sm text-center group-hover:text-white transition-colors">
+                      {tool.name}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
