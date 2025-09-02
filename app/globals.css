@@ -1,0 +1,109 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-background: 248 250 251;
+  --color-foreground: 31 41 55;
+  --color-card: 255 255 255;
+  --color-card-foreground: 31 41 55;
+  --color-popover: 255 255 255;
+  --color-popover-foreground: 31 41 55;
+  --color-primary: 0 212 179;
+  --color-primary-foreground: 255 255 255;
+  --color-secondary: 15 23 42;
+  --color-secondary-foreground: 255 255 255;
+  --color-muted: 248 250 251;
+  --color-muted-foreground: 71 85 105;
+  --color-accent: 0 212 179;
+  --color-accent-foreground: 15 23 42;
+  --color-destructive: 220 38 38;
+  --color-destructive-foreground: 255 255 255;
+  --color-border: 226 232 240;
+  --color-input: 255 255 255;
+  --color-ring: 0 212 179;
+  --radius: 0.5rem;
+}
+
+@theme dark {
+  --color-background: 15 23 42;
+  --color-foreground: 248 250 251;
+  --color-card: 31 41 55;
+  --color-card-foreground: 248 250 251;
+  --color-popover: 31 41 55;
+  --color-popover-foreground: 248 250 251;
+  --color-primary: 0 212 179;
+  --color-primary-foreground: 15 23 42;
+  --color-secondary: 248 250 251;
+  --color-secondary-foreground: 15 23 42;
+  --color-muted: 31 41 55;
+  --color-muted-foreground: 148 163 184;
+  --color-accent: 0 212 179;
+  --color-accent-foreground: 15 23 42;
+  --color-destructive: 239 68 68;
+  --color-destructive-foreground: 248 250 251;
+  --color-border: 51 65 85;
+  --color-input: 31 41 55;
+  --color-ring: 0 212 179;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-delayed {
+    animation: float 6s ease-in-out infinite 3s;
+  }
+  
+  .animate-glow {
+    animation: glow 8s ease-in-out infinite;
+  }
+
+  .animate-scroll-infinite {
+    animation: scroll-infinite 60s linear infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes scroll-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

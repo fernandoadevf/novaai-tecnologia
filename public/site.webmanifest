@@ -1,0 +1,25 @@
+{
+  "name": "NovaAI - Automações Inteligentes com IA",
+  "short_name": "NovaAI",
+  "description": "Transforme seu negócio com automações inteligentes powered by AI",
+  "icons": [
+    {
+      "src": "/logobaba.png?v=1",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/logobaba.png?v=1",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/logobaba.png?v=1",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0A2540",
+  "background_color": "#0A2540",
+  "display": "standalone"
+}
